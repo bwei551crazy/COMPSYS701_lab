@@ -126,37 +126,37 @@ begin
 		recv  => recv_port(1)
 	);
 
---	asp_example : entity work.AspExample
---	port map (
---		clock => clock,
---		key   => KEY,
---		sw    => SW,
---		ledr  => LEDR,
---		hex0  => HEX0,
---		hex1  => HEX1,
---		hex2  => HEX2,
---		hex3  => HEX3,
---		hex4  => HEX4,
---		hex5  => HEX5,
---
---		send  => send_port(2),
---		recv  => recv_port(2)
---	);
-	u0 : component nios_II_q4 
-		port map (
-			clk_clk                         => clock,
-			hex0_external_connection_export => HEX0,
-			hex1_external_connection_export => HEX1,
-			hex2_external_connection_export => HEX2, 
-			hex3_external_connection_export => HEX3,
-			hex4_external_connection_export => HEX4, 
-			hex5_external_connection_export => HEX5,
-			key_external_connection_export  => KEY,
-			reset_reset_n 						  => '1',
-			recv_external_connection_export => recv_port(2).data,
-			send_external_connection_export => send_port(2).data,
-			addr_external_connection_export => send_port(2).addr
-		);	
+	asp_example : entity work.AspExample
+	port map (
+		clock => clock,
+		key   => KEY,
+		sw    => SW,
+		ledr  => LEDR,
+		hex0  => HEX0,
+		hex1  => HEX1,
+		hex2  => HEX2,
+		hex3  => HEX3,
+		hex4  => HEX4,
+		hex5  => HEX5,
+
+		send  => send_port(2),
+		recv  => recv_port(2)
+	);
+--	u0 : component nios_II_q4 
+--		port map (
+--			clk_clk                         => clock,
+--			hex0_external_connection_export => HEX0,
+--			hex1_external_connection_export => HEX1,
+--			hex2_external_connection_export => HEX2, 
+--			hex3_external_connection_export => HEX3,
+--			hex4_external_connection_export => HEX4, 
+--			hex5_external_connection_export => HEX5,
+--			key_external_connection_export  => KEY,
+--			reset_reset_n 						  => '1',
+--			recv_external_connection_export => recv_port(2).data,
+--			send_external_connection_export => send_port(2).data,
+--			addr_external_connection_export => send_port(2).addr
+--		);	
 			
 	
 	
