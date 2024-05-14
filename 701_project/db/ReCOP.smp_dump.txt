@@ -1,9 +1,0 @@
-
-State Machine - |fetch_with_control|control_unit:inst63|state
-Name state.T4 state.T3 state.T2 state.T1_2 state.T1 state.init 
-state.init 0 0 0 0 0 0 
-state.T1 0 0 0 0 1 1 
-state.T1_2 0 0 0 1 0 1 
-state.T2 0 0 1 0 0 1 
-state.T3 0 1 0 0 0 1 
-state.T4 1 0 0 0 0 1 

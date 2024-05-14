@@ -106,6 +106,7 @@ begin
 --				--control to Max (optional code below)
 --				max_en <= '0'
 				next_state <= T1;
+				
 			when T1 =>
 				--state_is <= "001";
 				--Start of fetch
@@ -130,52 +131,15 @@ begin
 					ir_write <= '0';
 				end if;
 				next_state <= T2;
+				
 			when T2 => 
 				pc_write <= '0';
 				ir_write <= '0';
 				--state_is <= "011";
 				--Decoding stage
 				next_state <= T3;
-				
-			--------------------------this needs to be here + added conditions
-			----------------------------Another start-fuckaround1
 			
-			when T3 => 
-				check_AM <= '0';
-				if check_AM = '1' then
-					if Opcode = "001000" then
-						Op1_write <= '1';
-						Op1_mux_select <= "01";
-						Op2_write <= '1';
-						Op2_mux_select <= "11";
-					end if;
-					next_state <= T4;
-				elsif check_AM = '0' then
-					if Opcode = "001000" then
-						Op1_write <= '1';
-						Op1_mux_select <= "10";
-						Op2_write <= '1';
-						Op2_mux_select <= "11";
-					end if;
-					next_state <= T4;
-				end if; 
-				
-			when T4 => 
-				--state_is <= "101";
-			--Storing/Load stage 
-				alu_op1_sel <= "00";
-				alu_op2_sel <= '1';
-				if Opcode ="001000" then
-					alu_operation <= alu_and;
-				end if;
-				rf_input_sel <= "011";
-				next_state <= T1;
-				
-			----------------------------Another end-fuckaround1
-	
-				
-			
-			--------------------------Another start-fuckaround2
+			--------------------------
 			when T3 =>
 				 check_AM <= '0'; 
 				 if Opcode = "001000" then  -- AND Rz, Rx
@@ -221,7 +185,19 @@ begin
 				 else
 					  next_state <= T1;
 				 end if;
-			--------------------------Another end-fuckaround2
+			--------------------------	
+			
+			when T4 => 
+				--state_is <= "101";
+			--Storing/Load stage 
+				alu_op1_sel <= "00";
+				alu_op2_sel <= '1';
+				if Opcode ="001000" then
+					alu_operation <= alu_and;
+				end if;
+				rf_input_sel <= "011";
+				next_state <= T1;
+				
 			
 		end case;
 	end process;
