@@ -187,16 +187,56 @@ begin
 				 end if;
 			--------------------------	
 			
-			when T4 => 
-				--state_is <= "101";
-			--Storing/Load stage 
-				alu_op1_sel <= "00";
-				alu_op2_sel <= '1';
-				if Opcode ="001000" then
-					alu_operation <= alu_and;
-				end if;
-				rf_input_sel <= "011";
-				next_state <= T1;
+		when T4 => 
+			 case Opcode is
+				  when "001000" =>  -- AND operation
+						alu_op1_sel <= "10";  -- Rz --> Op1
+						alu_op2_sel <= '1';  -- Rx --> Op2
+						alu_operation <= "010";  -- AND
+						-- Check if the result needs to be written back to a register
+						if result_to_reg = '1' then
+							 reg_wr <= '1';  -- Enable writing to the register
+							 reg_data <= alu_result;  -- Data from ALU wr to reg (?)
+						end if;
+						z_flag <= (alu_result = x"0000");  -- Zero flag if result is 0
+
+				  when "001100" =>  -- OR operation
+						alu_op1_sel <= "10";						-- PLEASE CHANGE THESE VALUES ACCORDINGLY BRIAN THANK YOU SO MUCH!!!
+						alu_op2_sel <= '1';
+						alu_operation <= "011";  -- OR
+						if result_to_reg = '1' then
+							 reg_wr <= '1';
+							 reg_data <= alu_result;
+						end if;
+						z_flag <= (alu_result = x"0000");
+
+				  when "111000" =>  -- ADD operation
+						alu_op1_sel <= "10";
+						alu_op2_sel <= '1';
+						alu_operation <= "000";  -- ADD
+						if result_to_reg = '1' then
+							 reg_wr <= '1';
+							 reg_data <= alu_result;
+						end if;
+						z_flag <= (alu_result = x"0000");
+
+				  when "000100" =>  -- SUB operation
+						alu_op1_sel <= "10";
+						alu_op2_sel <= '1';
+						alu_operation <= "001";  -- SUB
+						if result_to_reg = '1' then
+							 reg_wr <= '1';
+							 reg_data <= alu_result;
+						end if;
+						z_flag <= (alu_result = x"0000");
+
+				  when others =>
+						alu_operation <= "000";  -- Default? 
+
+    end case;
+
+    next_state <= T1; 
+
 				
 			
 		end case;
