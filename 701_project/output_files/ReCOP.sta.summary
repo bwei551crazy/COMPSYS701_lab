@@ -1,0 +1,165 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'control_unit:inst63|state.T3'
+Slack : -5.394
+TNS   : -5.394
+
+Type  : Slow 1100mV 85C Model Setup 'control_unit:inst63|state.T1'
+Slack : -4.084
+TNS   : -4.084
+
+Type  : Slow 1100mV 85C Model Setup 'clock'
+Slack : -3.026
+TNS   : -203.829
+
+Type  : Slow 1100mV 85C Model Hold 'clock'
+Slack : 0.274
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'control_unit:inst63|state.T3'
+Slack : 1.263
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'control_unit:inst63|state.T1'
+Slack : 2.711
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock'
+Slack : -0.394
+TNS   : -51.378
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'control_unit:inst63|state.T1'
+Slack : 0.422
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'control_unit:inst63|state.init'
+Slack : 0.449
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'control_unit:inst63|state.T3'
+Slack : 0.458
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'control_unit:inst63|state.T3'
+Slack : -5.429
+TNS   : -5.429
+
+Type  : Slow 1100mV 0C Model Setup 'control_unit:inst63|state.T1'
+Slack : -4.117
+TNS   : -4.117
+
+Type  : Slow 1100mV 0C Model Setup 'clock'
+Slack : -2.691
+TNS   : -183.977
+
+Type  : Slow 1100mV 0C Model Hold 'clock'
+Slack : -0.090
+TNS   : -0.090
+
+Type  : Slow 1100mV 0C Model Hold 'control_unit:inst63|state.T3'
+Slack : 1.182
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'control_unit:inst63|state.T1'
+Slack : 2.660
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock'
+Slack : -0.394
+TNS   : -54.003
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'control_unit:inst63|state.T1'
+Slack : 0.363
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'control_unit:inst63|state.T3'
+Slack : 0.430
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'control_unit:inst63|state.init'
+Slack : 0.432
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'control_unit:inst63|state.T3'
+Slack : -2.585
+TNS   : -2.585
+
+Type  : Fast 1100mV 85C Model Setup 'clock'
+Slack : -2.545
+TNS   : -127.893
+
+Type  : Fast 1100mV 85C Model Setup 'control_unit:inst63|state.T1'
+Slack : -1.757
+TNS   : -1.757
+
+Type  : Fast 1100mV 85C Model Hold 'clock'
+Slack : 0.196
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'control_unit:inst63|state.T3'
+Slack : 0.734
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'control_unit:inst63|state.T1'
+Slack : 1.561
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock'
+Slack : -0.086
+TNS   : -7.027
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'control_unit:inst63|state.T1'
+Slack : 0.477
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'control_unit:inst63|state.T3'
+Slack : 0.478
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'control_unit:inst63|state.init'
+Slack : 0.482
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'control_unit:inst63|state.T3'
+Slack : -2.418
+TNS   : -2.418
+
+Type  : Fast 1100mV 0C Model Setup 'clock'
+Slack : -1.967
+TNS   : -92.304
+
+Type  : Fast 1100mV 0C Model Setup 'control_unit:inst63|state.T1'
+Slack : -1.674
+TNS   : -1.674
+
+Type  : Fast 1100mV 0C Model Hold 'clock'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'control_unit:inst63|state.T3'
+Slack : 0.653
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'control_unit:inst63|state.T1'
+Slack : 1.504
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock'
+Slack : -0.086
+TNS   : -7.242
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'control_unit:inst63|state.T1'
+Slack : 0.461
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'control_unit:inst63|state.init'
+Slack : 0.476
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'control_unit:inst63|state.T3'
+Slack : 0.486
+TNS   : 0.000
+
+------------------------------------------------------------

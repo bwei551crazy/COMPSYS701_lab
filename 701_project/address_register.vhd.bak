@@ -1,0 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+use work.recop_types.all;
+use work.opcodes.all;
+
+entity address_register is 
+	port (
+		reg_write 	: in bit_1;
+		operand 	 	: in bit_16;
+		rz			 	: in bit_16; --need to determine which registers to use for determining the register
+		addr_reg_in : out bit_16
+	);
+end entity address_register
+	
+architecture behaviour of address is 
+begin 
+	
+		

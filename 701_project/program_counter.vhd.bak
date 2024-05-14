@@ -1,0 +1,16 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+use work.recop_types.all;
+use work.opcodes.all;
+use work.various_constants.all;
+
+entity program_counter is
+	port (
+		clk : in bit_1,
+		reset: in bit_1,
+		PC : out bit_16, 
+		mux: in bit_4,
+		
