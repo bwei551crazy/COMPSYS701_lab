@@ -189,37 +189,48 @@ begin
                     Op2_write <= '1';
                     Op2_mux_select <= "11"; -- Rx
                     alu_operation <= "001"; -- ALU SUB operation
+					 elsif Opcode = "011000" then -- JMP NEED TO FINISH THIS 
+					 
+							
                 else
                     -- Reset outputs if no valid opcode
                     alu_op1_sel <= "00";
                     alu_op2_sel <= '0';
                     alu_operation <= "000";
+					 
                 end if;
+
                 next_state <= T3;
 
             -- Start of T3
             when T3 =>
-                -- Storing the result
+                --Executing instruction using the selected stuff from T2
                 alu_op1_sel <= "00";
                 alu_op2_sel <= '1';
                 ld_r <= '1'; 
-
-                case opcode is
-                    when "001000" => -- AND
-                        alu_operation <= alu_and;
-								
-                    when "001100" => -- OR
-                        alu_operation <= alu_or;
-								
-                    when "111000" => -- ADD
-                        alu_operation <= alu_add;
-								
-                    when "000100" => -- SUB
-                        alu_operation <= alu_sub;    
-						  when others => 
-								alu_operation <= "000";
-								
-                end case;        
+					 
+					  case opcode is -- THESE SECTIONS NEED TO CHANGE !! 
+						 when "001000" => -- AND
+							  alu_operation <= alu_and;
+						 when "001100" => -- OR
+							  alu_operation <= alu_or;
+						 when "111000" => -- ADD
+							  alu_operation <= alu_add;
+						 when "000100" => -- SUB
+							  alu_operation <= alu_sub;			  
+						 when "010000" => -- CLFZ
+							  clr_z_flag <= '1';  
+						 when "111010" => -- SSOP
+							  sop_wr <= '1';  
+						 when "110111" => -- LSIP
+							  irq_wr <= '1';
+						 when "000000" => -- LDR
+							  ld_r <= '1';  -- Load 
+						 when "011100" => -- PRESENT
+							  present_wr <= '1'; 
+						 when others => 
+							  alu_operation <= "000";
+					end case;		   
 
                 next_state <= T4; 
 
