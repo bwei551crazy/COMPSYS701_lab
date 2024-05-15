@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReCOP
-Wed May 15 12:39:45 2024
+Wed May 15 13:04:52 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Wed May 15 12:39:45 2024               ;
+; Analysis & Synthesis Status ; Failed - Wed May 15 13:04:52 2024               ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name               ; ReCOP                                           ;
 ; Top-level Entity Name       ; fetch_with_control                              ;
@@ -143,7 +143,7 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 16          ;
+; Number detected on machine ; 24          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
@@ -160,7 +160,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Wed May 15 12:39:38 2024
+    Info: Processing started: Wed May 15 13:04:39 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReCOP -c ReCOP
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -247,11 +247,11 @@ Info (12021): Found 2 design units, including 1 entities, in source file op2.vhd
     Info (12023): Found entity 1: OP2 File: H:/COMPSYS701_lab/701_project/OP2.vhd Line: 10
 Info (12021): Found 1 design units, including 1 entities, in source file fetch_with_control.bdf
     Info (12023): Found entity 1: fetch_with_control
-Error (10482): VHDL error at control_unit.vhd(196): object "result_to_reg" is used but not declared File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 196
+Error (10482): VHDL error at control_unit.vhd(200): object "reg_data" is used but not declared File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 200
 Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 4846 megabytes
-    Error: Processing ended: Wed May 15 12:39:46 2024
-    Error: Elapsed time: 00:00:08
-    Error: Total CPU time (on all processors): 00:00:03
+    Error: Peak virtual memory: 4849 megabytes
+    Error: Processing ended: Wed May 15 13:04:53 2024
+    Error: Elapsed time: 00:00:14
+    Error: Total CPU time (on all processors): 00:00:01
 
 

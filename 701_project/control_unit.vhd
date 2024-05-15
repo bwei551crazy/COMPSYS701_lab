@@ -51,7 +51,8 @@ end entity control_unit;
 architecture behaviour of control_unit is
 type type_state is (init, T1, T1_2, T2, T3, T4); --T1, T1_2, T2, T3, T4); --T0 for setting up flags, 
 signal state : type_state := init;
-signal next_state : type_state := init;	
+signal next_state : type_state := init;
+
 begin
 	--At start or when reset has been set to high. 
 	process(clk, reset_in) 
@@ -113,6 +114,7 @@ begin
 				pc_write <= '1';
 				ir_write <= '1';
 				next_state <= T1_2;
+				
 			when T1_2 => 
 				--state_is <= "010";
 				--ir_write <= '1';
