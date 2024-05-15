@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReCOP
-Wed May 15 13:04:52 2024
+Wed May 15 17:17:12 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -10,7 +10,18 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |fetch_with_control|control_unit:inst63|state
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Port Connectivity Checks: "program_counter:inst|reg_16:PC_Reg_16"
+ 13. Port Connectivity Checks: "instruction_register:inst6|reg_16:IR"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -33,22 +44,27 @@ refer to the applicable agreement for further details.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Wed May 15 13:04:52 2024               ;
-; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
-; Revision Name               ; ReCOP                                           ;
-; Top-level Entity Name       ; fetch_with_control                              ;
-; Family                      ; Cyclone V                                       ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                       ;
-; Total registers             ; N/A until Partition Merge                       ;
-; Total pins                  ; N/A until Partition Merge                       ;
-; Total virtual pins          ; N/A until Partition Merge                       ;
-; Total block memory bits     ; N/A until Partition Merge                       ;
-; Total PLLs                  ; N/A until Partition Merge                       ;
-; Total DLLs                  ; N/A until Partition Merge                       ;
-+-----------------------------+-------------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed May 15 17:17:12 2024           ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
+; Revision Name                   ; ReCOP                                           ;
+; Top-level Entity Name           ; fetch_with_control                              ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 86                                              ;
+; Total pins                      ; 106                                             ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -147,11 +163,746 @@ refer to the applicable agreement for further details.
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-16        ;   0.0%      ;
 +----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                           ;
++---------------------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                        ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                          ; Library ;
++---------------------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------------+---------+
+; Selected VHDL source design files/various_constants.vhd ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/Selected VHDL source design files/various_constants.vhd ;         ;
+; Selected VHDL source design files/recop_types.vhd       ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/Selected VHDL source design files/recop_types.vhd       ;         ;
+; Selected VHDL source design files/opcodes.vhd           ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/Selected VHDL source design files/opcodes.vhd           ;         ;
+; Selected VHDL source design files/memory_model.vhd      ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/Selected VHDL source design files/memory_model.vhd      ;         ;
+; program_counter.vhd                                     ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/program_counter.vhd                                     ;         ;
+; instruction_register.vhd                                ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/instruction_register.vhd                                ;         ;
+; reg_16.vhd                                              ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/reg_16.vhd                                              ;         ;
+; control_unit.vhd                                        ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/control_unit.vhd                                        ;         ;
+; Mux4_16.vhd                                             ; yes             ; User VHDL File                     ; H:/COMPSYS701_lab/701_project/Mux4_16.vhd                                             ;         ;
+; fetch_with_control.bdf                                  ; yes             ; User Block Diagram/Schematic File  ; H:/COMPSYS701_lab/701_project/fetch_with_control.bdf                                  ;         ;
++---------------------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimate of Logic utilization (ALMs needed) ; 45          ;
+;                                             ;             ;
+; Combinational ALUT usage for logic          ; 46          ;
+;     -- 7 input functions                    ; 0           ;
+;     -- 6 input functions                    ; 16          ;
+;     -- 5 input functions                    ; 0           ;
+;     -- 4 input functions                    ; 1           ;
+;     -- <=3 input functions                  ; 29          ;
+;                                             ;             ;
+; Dedicated logic registers                   ; 86          ;
+;                                             ;             ;
+; I/O pins                                    ; 106         ;
+;                                             ;             ;
+; Total DSP Blocks                            ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; clock~input ;
+; Maximum fan-out                             ; 86          ;
+; Total fan-out                               ; 601         ;
+; Average fan-out                             ; 1.75        ;
++---------------------------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                        ;
++---------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+----------------------+--------------+
+; Compilation Hierarchy Node      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                       ; Entity Name          ; Library Name ;
++---------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+----------------------+--------------+
+; |fetch_with_control             ; 46 (0)              ; 86 (0)                    ; 0                 ; 0          ; 106  ; 0            ; |fetch_with_control                                       ; fetch_with_control   ; work         ;
+;    |control_unit:inst63|        ; 14 (14)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |fetch_with_control|control_unit:inst63                   ; control_unit         ; work         ;
+;    |instruction_register:inst6| ; 0 (0)               ; 48 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fetch_with_control|instruction_register:inst6            ; instruction_register ; work         ;
+;       |reg_16:IR|               ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fetch_with_control|instruction_register:inst6|reg_16:IR  ; reg_16               ; work         ;
+;    |memory:inst3|               ; 16 (16)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fetch_with_control|memory:inst3                          ; memory               ; work         ;
+;    |program_counter:inst|       ; 16 (16)             ; 16 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |fetch_with_control|program_counter:inst                  ; program_counter      ; work         ;
+;       |reg_16:PC_Reg_16|        ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fetch_with_control|program_counter:inst|reg_16:PC_Reg_16 ; reg_16               ; work         ;
++---------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |fetch_with_control|control_unit:inst63|state                    ;
++------------+----------+----------+----------+------------+----------+------------+
+; Name       ; state.T4 ; state.T3 ; state.T2 ; state.T1_2 ; state.T1 ; state.init ;
++------------+----------+----------+----------+------------+----------+------------+
+; state.init ; 0        ; 0        ; 0        ; 0          ; 0        ; 0          ;
+; state.T1   ; 0        ; 0        ; 0        ; 0          ; 1        ; 1          ;
+; state.T1_2 ; 0        ; 0        ; 0        ; 1          ; 0        ; 1          ;
+; state.T2   ; 0        ; 0        ; 1        ; 0          ; 0        ; 1          ;
+; state.T3   ; 0        ; 1        ; 0        ; 0          ; 0        ; 1          ;
+; state.T4   ; 1        ; 0        ; 0        ; 0          ; 0        ; 1          ;
++------------+----------+----------+----------+------------+----------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                           ;
++----------------------------------------------------+---------------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal             ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------------------+------------------------+
+; control_unit:inst63|ir_write                       ; control_unit:inst63|state_is[2] ; yes                    ;
+; control_unit:inst63|check_AM                       ; control_unit:inst63|WideOr0     ; yes                    ;
+; control_unit:inst63|pc_write                       ; control_unit:inst63|state_is[2] ; yes                    ;
+; control_unit:inst63|reset_out                      ; control_unit:inst63|state.init  ; yes                    ;
+; control_unit:inst63|next_state.T3_409              ; control_unit:inst63|state.T4    ; yes                    ;
+; control_unit:inst63|next_state.T4_401              ; control_unit:inst63|state.T4    ; yes                    ;
+; control_unit:inst63|next_state.T1_2_425            ; control_unit:inst63|state.T4    ; yes                    ;
+; control_unit:inst63|next_state.T2_417              ; control_unit:inst63|state.T4    ; yes                    ;
+; control_unit:inst63|next_state.T1_433              ; control_unit:inst63|state.T4    ; yes                    ;
+; Number of user-specified and inferred latches = 9  ;                                 ;                        ;
++----------------------------------------------------+---------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; memory:inst3|memory~38                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~54                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~70                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~86                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~102                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~118                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~134                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~150                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~166                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~182                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~198                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~214                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~230                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~246                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~262                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~278                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~294                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~310                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~326                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~342                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~358                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~374                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~390                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~406                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~422                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~438                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~454                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~470                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~486                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~502                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~518                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~534                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~550                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~566                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~582                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~37                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~53                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~69                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~85                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~101                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~117                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~133                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~149                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~165                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~181                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~197                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~213                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~229                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~245                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~261                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~277                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~293                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~309                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~325                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~341                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~357                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~373                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~389                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~405                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~421                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~437                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~453                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~469                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~485                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~501                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~517                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~533                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~549                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~565                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~581                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~36                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~52                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~68                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~84                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~100                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~116                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~132                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~148                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~164                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~180                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~196                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~212                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~228                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~244                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~260                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~276                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~292                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~308                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~324                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~340                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~356                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~372                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~388                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~404                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~420                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~436                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~452                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~468                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~484                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~500                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~516                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~532                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~548                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~564                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~580                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~35                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~51                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~67                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~83                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~99                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~115                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~131                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~147                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~163                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~179                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~195                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~211                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~227                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~243                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~259                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~275                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~291                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~307                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~323                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~339                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~355                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~371                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~387                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~403                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~419                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~435                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~451                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~467                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~483                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~499                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~515                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~531                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~547                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~563                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~579                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~34                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~50                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~66                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~82                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~98                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~114                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~130                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~146                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~162                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~178                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~194                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~210                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~226                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~242                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~258                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~274                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~290                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~306                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~322                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~338                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~354                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~370                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~386                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~402                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~418                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~434                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~450                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~466                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~482                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~498                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~514                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~530                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~546                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~562                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~578                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~33                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~49                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~65                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~81                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~97                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~113                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~129                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~145                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~161                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~177                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~193                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~209                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~225                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~241                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~257                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~273                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~289                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~305                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~321                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~337                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~353                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~369                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~385                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~401                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~417                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~433                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~449                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~465                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~481                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~497                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~513                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~529                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~545                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~561                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~577                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~32                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~48                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~64                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~80                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~96                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~112                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~128                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~144                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~160                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~176                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~192                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~208                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~224                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~240                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~256                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~272                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~288                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~304                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~320                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~336                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~352                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~368                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~384                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~400                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~416                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~432                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~448                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~464                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~480                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~496                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~512                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~528                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~544                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~560                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~576                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~31                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~47                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~63                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~79                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~95                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~111                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~127                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~143                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~159                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~175                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~191                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~207                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~223                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~239                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~255                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~271                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~287                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~303                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~319                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~335                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~351                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~367                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~383                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~399                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~415                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~431                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~447                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~463                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~479                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~495                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~511                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~527                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~543                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~559                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~575                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~30                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~46                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~62                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~78                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~94                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~110                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~126                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~142                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~158                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~174                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~190                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~206                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~222                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~238                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~254                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~270                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~286                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~302                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~318                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~334                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~350                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~366                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~382                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~398                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~414                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~430                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~446                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~462                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~478                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~494                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~510                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~526                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~542                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~558                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~574                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~29                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~45                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~61                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~77                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~93                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~109                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~125                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~141                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~157                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~173                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~189                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~205                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~221                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~237                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~253                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~269                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~285                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~301                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~317                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~333                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~349                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~365                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~381                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~397                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~413                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~429                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~445                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~461                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~477                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~493                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~509                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~525                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~541                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~557                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~573                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~28                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~44                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~60                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~76                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~92                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~108                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~124                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~140                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~156                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~172                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~188                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~204                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~220                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~236                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~252                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~268                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~284                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~300                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~316                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~332                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~348                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~364                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~380                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~396                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~412                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~428                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~444                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~460                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~476                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~492                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~508                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~524                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~540                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~556                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~572                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~27                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~43                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~59                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~75                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~91                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~107                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~123                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~139                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~155                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~171                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~187                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~203                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~219                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~235                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~251                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~267                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~283                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~299                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~315                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~331                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~347                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~363                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~379                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~395                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~411                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~427                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~443                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~459                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~475                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~491                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~507                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~523                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~539                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~555                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~571                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~26                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~42                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~58                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~74                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~90                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~106                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~122                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~138                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~154                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~170                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~186                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~202                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~218                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~234                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~250                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~266                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~282                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~298                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~314                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~330                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~346                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~362                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~378                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~394                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~410                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~426                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~442                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~458                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~474                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~490                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~506                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~522                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~538                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~554                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~570                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~25                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~41                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~57                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~73                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~89                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~105                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~121                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~137                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~153                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~169                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~185                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~201                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~217                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~233                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~249                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~265                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~281                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~297                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~313                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~329                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~345                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~361                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~377                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~393                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~409                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~425                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~441                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~457                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~473                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~489                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~505                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~521                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~537                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~553                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~569                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~24                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~40                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~56                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~72                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~88                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~104                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~120                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~136                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~152                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~168                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~184                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~200                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~216                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~232                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~248                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~264                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~280                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~296                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~312                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~328                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~344                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~360                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~376                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~392                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~408                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~424                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~440                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~456                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~472                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~488                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~504                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~520                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~536                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~552                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~568                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~23                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~39                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~55                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~71                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~87                  ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~103                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~119                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~135                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~151                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~167                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~183                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~199                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~215                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~231                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~247                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~263                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~279                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~295                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~311                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~327                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~343                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~359                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~375                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~391                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~407                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~423                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~439                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~455                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~471                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~487                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~503                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~519                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~535                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~551                 ; Stuck at GND due to stuck port data_in ;
+; memory:inst3|memory~567                 ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 560 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 86    ;
+; Number of registers using Synchronous Clear  ; 16    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 64    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "program_counter:inst|reg_16:PC_Reg_16"                                                                         ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                  ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; pc_counter ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "instruction_register:inst6|reg_16:IR"                                                                          ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                  ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; pc_counter ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 86                          ;
+;     CLR               ; 6                           ;
+;     ENA               ; 48                          ;
+;     ENA SCLR          ; 16                          ;
+;     plain             ; 16                          ;
+; arriav_lcell_comb     ; 49                          ;
+;     arith             ; 16                          ;
+;         1 data inputs ; 16                          ;
+;     normal            ; 33                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 11                          ;
+;         4 data inputs ; 1                           ;
+;         6 data inputs ; 16                          ;
+; boundary_port         ; 106                         ;
+;                       ;                             ;
+; Max LUT depth         ; 2.50                        ;
+; Average LUT depth     ; 1.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
 
 
 +-------------------------------+
@@ -160,7 +911,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Wed May 15 13:04:39 2024
+    Info: Processing started: Wed May 15 17:17:02 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReCOP -c ReCOP
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -247,11 +998,151 @@ Info (12021): Found 2 design units, including 1 entities, in source file op2.vhd
     Info (12023): Found entity 1: OP2 File: H:/COMPSYS701_lab/701_project/OP2.vhd Line: 10
 Info (12021): Found 1 design units, including 1 entities, in source file fetch_with_control.bdf
     Info (12023): Found entity 1: fetch_with_control
-Error (10482): VHDL error at control_unit.vhd(200): object "reg_data" is used but not declared File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 200
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 4849 megabytes
-    Error: Processing ended: Wed May 15 13:04:53 2024
-    Error: Elapsed time: 00:00:14
-    Error: Total CPU time (on all processors): 00:00:01
+Info (12127): Elaborating entity "fetch_with_control" for the top level hierarchy
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:inst63"
+Warning (10492): VHDL Process Statement warning at control_unit.vhd(71): signal "reset_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 71
+Warning (10492): VHDL Process Statement warning at control_unit.vhd(168): signal "Opcode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 168
+Warning (10492): VHDL Process Statement warning at control_unit.vhd(174): signal "Opcode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 174
+Warning (10492): VHDL Process Statement warning at control_unit.vhd(180): signal "Opcode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 180
+Warning (10492): VHDL Process Statement warning at control_unit.vhd(186): signal "Opcode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 186
+Warning (10492): VHDL Process Statement warning at control_unit.vhd(207): signal "Opcode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 207
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "reset_out", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "pc_write", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "pc_mux_sel", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "ir_write", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "check_AM", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "rf_input_sel", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "reg_init", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "ld_r", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "dprr_res", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "dprr_res_reg", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "dprr_wren", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "alu_op1_sel", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "alu_op2_sel", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "clr_z_flag", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "dpcr_wr", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "sop_wr", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "irq_wr", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "irq_clr", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "result_wren", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "present_wr", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "reg_wr", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "addr_mux_sel", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "addr_reset", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "mux3_16_sel", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "wr_en", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "next_state", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "Op1_write", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "Op1_mux_select", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "Op2_write", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "Op2_mux_select", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at control_unit.vhd(67): inferring latch(es) for signal or variable "alu_operation", which holds its previous value in one or more paths through the process File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "alu_operation[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "alu_operation[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "alu_operation[2]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "Op2_mux_select[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "Op2_mux_select[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "Op2_write" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "Op1_mux_select[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "Op1_mux_select[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "Op1_write" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "next_state.T4" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "next_state.T3" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "next_state.T2" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "next_state.T1_2" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "next_state.T1" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "next_state.init" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "wr_en" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "mux3_16_sel[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "mux3_16_sel[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "addr_reset" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "addr_mux_sel[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "addr_mux_sel[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "reg_wr" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "present_wr" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "result_wren" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "irq_clr" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "irq_wr" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "sop_wr" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "dpcr_wr" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "clr_z_flag" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "alu_op2_sel" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "alu_op1_sel[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "alu_op1_sel[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "dprr_wren" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "dprr_res_reg" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "dprr_res" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "ld_r" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "reg_init" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "rf_input_sel[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "rf_input_sel[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "rf_input_sel[2]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "check_AM" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "ir_write" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "pc_mux_sel[0]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "pc_mux_sel[1]" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "pc_write" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (10041): Inferred latch for "reset_out" at control_unit.vhd(67) File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 67
+Info (12128): Elaborating entity "instruction_register" for hierarchy "instruction_register:inst6"
+Info (12128): Elaborating entity "reg_16" for hierarchy "instruction_register:inst6|reg_16:IR" File: H:/COMPSYS701_lab/701_project/instruction_register.vhd Line: 49
+Warning (10541): VHDL Signal Declaration warning at reg_16.vhd(14): used implicit default value for signal "pc_counter" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: H:/COMPSYS701_lab/701_project/reg_16.vhd Line: 14
+Info (12128): Elaborating entity "memory" for hierarchy "memory:inst3"
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:inst"
+Info (12128): Elaborating entity "Mux4_16" for hierarchy "program_counter:inst|Mux4_16:PC_Mux_16" File: H:/COMPSYS701_lab/701_project/program_counter.vhd Line: 48
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "memory:inst3|memory" is uninferred due to inappropriate RAM size File: H:/COMPSYS701_lab/701_project/Selected VHDL source design files/memory_model.vhd Line: 29
+Warning (113028): 29 out of 64 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: H:/COMPSYS701_lab/701_project/db/ReCOP.ram0_memory_e411fb78.hdl.mif Line: 1
+    Warning (113027): Addresses ranging from 35 to 63 are not initialized File: H:/COMPSYS701_lab/701_project/db/ReCOP.ram0_memory_e411fb78.hdl.mif Line: 1
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "control_unit:inst63|pc_write" merged with LATCH primitive "control_unit:inst63|ir_write" File: H:/COMPSYS701_lab/701_project/control_unit.vhd Line: 17
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "pc_mux_sel[1]" is stuck at GND
+    Warning (13410): Pin "pc_mux_sel[0]" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 32 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "present_out[15]"
+    Warning (15610): No output dependent on input pin "present_out[14]"
+    Warning (15610): No output dependent on input pin "present_out[13]"
+    Warning (15610): No output dependent on input pin "present_out[12]"
+    Warning (15610): No output dependent on input pin "present_out[11]"
+    Warning (15610): No output dependent on input pin "present_out[10]"
+    Warning (15610): No output dependent on input pin "present_out[9]"
+    Warning (15610): No output dependent on input pin "present_out[8]"
+    Warning (15610): No output dependent on input pin "present_out[7]"
+    Warning (15610): No output dependent on input pin "present_out[6]"
+    Warning (15610): No output dependent on input pin "present_out[5]"
+    Warning (15610): No output dependent on input pin "present_out[4]"
+    Warning (15610): No output dependent on input pin "present_out[3]"
+    Warning (15610): No output dependent on input pin "present_out[2]"
+    Warning (15610): No output dependent on input pin "present_out[1]"
+    Warning (15610): No output dependent on input pin "present_out[0]"
+    Warning (15610): No output dependent on input pin "rx[15]"
+    Warning (15610): No output dependent on input pin "rx[14]"
+    Warning (15610): No output dependent on input pin "rx[13]"
+    Warning (15610): No output dependent on input pin "rx[12]"
+    Warning (15610): No output dependent on input pin "rx[11]"
+    Warning (15610): No output dependent on input pin "rx[10]"
+    Warning (15610): No output dependent on input pin "rx[9]"
+    Warning (15610): No output dependent on input pin "rx[8]"
+    Warning (15610): No output dependent on input pin "rx[7]"
+    Warning (15610): No output dependent on input pin "rx[6]"
+    Warning (15610): No output dependent on input pin "rx[5]"
+    Warning (15610): No output dependent on input pin "rx[4]"
+    Warning (15610): No output dependent on input pin "rx[3]"
+    Warning (15610): No output dependent on input pin "rx[2]"
+    Warning (15610): No output dependent on input pin "rx[1]"
+    Warning (15610): No output dependent on input pin "rx[0]"
+Info (21057): Implemented 206 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 34 input pins
+    Info (21059): Implemented 72 output pins
+    Info (21061): Implemented 100 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 78 warnings
+    Info: Peak virtual memory: 4961 megabytes
+    Info: Processing ended: Wed May 15 17:17:12 2024
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:03
 
 

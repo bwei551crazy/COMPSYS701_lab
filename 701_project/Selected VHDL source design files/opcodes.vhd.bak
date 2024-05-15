@@ -22,7 +22,7 @@ package opcodes is
 --   normal instructions   --
 -----------------------------
 
--- operations with immediate, direct and indirect AMs
+-- operations with immediate, direct and indirect AM
 	-- immediate: LDR Rz #value
 	-- indirect: LDR Rz $address
 	-- direct: LDR Rz Rx
@@ -54,9 +54,9 @@ package opcodes is
 
 -- operations with inherent AM
    constant clfz: bit_6 := "010000";
-   constant cer : bit_6 := "111100"; -- dont use this 
-   constant ceot: bit_6 := "111110"; -- dont use this 
-   constant seot: bit_6 := "111111"; -- dont use this 
+   constant cer : bit_6 := "111100";
+   constant ceot: bit_6 := "111110";
+   constant seot: bit_6 := "111111";
    constant noop: bit_6 := "110100";
    
 -- operations with immediate AM
@@ -65,7 +65,7 @@ package opcodes is
 
 -- operations with direct AM
    -- LER Rz
-   constant  ler : bit_6 := "110110"; -- dont use this
+   constant  ler : bit_6 := "110110";
 
 ----------------------------	
 --  special instructions  --
@@ -73,7 +73,7 @@ package opcodes is
 	
 -- operations with direct AM
    -- direct: SSVOP Rx 
-	constant ssvop: bit_6 := "111011"; -- dont use this 
+	constant ssvop: bit_6 := "111011";
 	
 -- operations with direct AM
    -- direct: SSOP Rx 
@@ -94,7 +94,7 @@ package opcodes is
 	
 -- operations with immediate AM
 	-- immediate : MAX Rz #value
-	constant max: bit_6 := "011110"; -- dont use this 
+	constant max: bit_6 := "011110";
 	
 -- operations with direct AM
 	-- direct : STRPC Rz $address
