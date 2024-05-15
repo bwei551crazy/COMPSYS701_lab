@@ -41,10 +41,10 @@ entity control_unit is
 		check_AM				: out bit_1;
 		Op1_write			: out bit_1;
 		Op2_write 			: out bit_1;
-		Op1_mux_select			: out bit_2;
-		Op2_mux_select 		: out bit_2;
+		Op1_mux_select		: out bit_2;
+		Op2_mux_select 	: out bit_2;
 		Opcode				: in bit_6;
-		state_is					: out bit_3
+		state_is				: out bit_3
 		);
 end entity control_unit;
 
@@ -187,59 +187,56 @@ begin
 				 end if;
 			--------------------------	
 			
-		when T4 => 
-			 case Opcode is
-				  when "001000" =>  -- AND operation
-						alu_op1_sel <= "10";  -- Rz --> Op1
-						alu_op2_sel <= '1';  -- Rx --> Op2
-						alu_operation <= "010";  -- AND
-						-- Check if the result needs to be written back to a register
-						if result_to_reg = '1' then
-							 reg_wr <= '1';  -- Enable writing to the register
-							 reg_data <= alu_result;  -- Data from ALU wr to reg (?)
-						end if;
-						z_flag <= (alu_result = x"0000");  -- Zero flag if result is 0
+			when T4 => 
+				-- Check specific operations based on Opcode
+				if Opcode = "001000" then 
+					alu_op1_sel <= "10";  -- Rz --> Op1
+					alu_op2_sel <= '1';   -- Rx --> Op2
+					alu_operation <= "010";  -- AND
+					if result_to_reg = '1' then
+						reg_wr <= '1';  -- Enable wr to reg
+						reg_data <= alu_result;  -- Write data from ALU to reg
+					end if;
 
-				  when "001100" =>  -- OR operation
-						alu_op1_sel <= "10";						-- PLEASE CHANGE THESE VALUES ACCORDINGLY BRIAN THANK YOU SO MUCH!!!
-						alu_op2_sel <= '1';
-						alu_operation <= "011";  -- OR
-						if result_to_reg = '1' then
-							 reg_wr <= '1';
-							 reg_data <= alu_result;
-						end if;
-						z_flag <= (alu_result = x"0000");
+				elsif Opcode = "001100" then 
+					alu_op1_sel <= "10";  -- Rz --> Op1
+					alu_op2_sel <= '1';   -- Rx --> Op2
+					alu_operation <= "011";  -- OR
+					if result_to_reg = '1' then
+						reg_wr <= '1';
+						reg_data <= alu_result;
+					end if;
 
-				  when "111000" =>  -- ADD operation
-						alu_op1_sel <= "10";
-						alu_op2_sel <= '1';
-						alu_operation <= "000";  -- ADD
-						if result_to_reg = '1' then
-							 reg_wr <= '1';
-							 reg_data <= alu_result;
-						end if;
-						z_flag <= (alu_result = x"0000");
+				elsif Opcode = "111000" then 
+					alu_op1_sel <= "10";  -- Rz --> Op1
+					alu_op2_sel <= '1';   -- Rx --> Op2
+					alu_operation <= "000";  -- ADD
+					if result_to_reg = '1' then
+						reg_wr <= '1';
+						reg_data <= alu_result;
+					end if;
 
-				  when "000100" =>  -- SUB operation
-						alu_op1_sel <= "10";
-						alu_op2_sel <= '1';
-						alu_operation <= "001";  -- SUB
-						if result_to_reg = '1' then
-							 reg_wr <= '1';
-							 reg_data <= alu_result;
-						end if;
-						z_flag <= (alu_result = x"0000");
+				elsif Opcode = "000100" then 
+					alu_op1_sel <= "10";  -- Rz --> Op1
+					alu_op2_sel <= '1';   -- Rx --> Op2
+					alu_operation <= "001";  -- SUB
+					if result_to_reg = '1' then
+						reg_wr <= '1';
+						reg_data <= alu_result;
+					end if;
 
-				  when others =>
-						alu_operation <= "000";  -- Default? 
+				else
+					alu_operation <= "000"; 
 
-    end case;
+				end if;
 
-    next_state <= T1; 
+				if z_flag = '1' then
+					-- need to add what would happen here
+				end if;
 
+				next_state <= T1;  -- Move to the next state
 				
-			
-		end case;
+		end case; 
 	end process;
 				
 	with state select state_is <=
