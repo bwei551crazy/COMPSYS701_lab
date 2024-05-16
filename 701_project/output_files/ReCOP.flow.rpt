@@ -1,5 +1,5 @@
 Flow report for ReCOP
-Thu May 16 18:10:34 2024
+Thu May 16 18:53:41 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,25 +40,25 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Thu May 16 18:10:34 2024           ;
+; Flow Status                     ; Successful - Thu May 16 18:53:32 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; ReCOP                                           ;
 ; Top-level Entity Name           ; fetch_with_control                              ;
 ; Family                          ; Cyclone V                                       ;
 ; Device                          ; 5CSEMA5F31C6                                    ;
 ; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 86                                              ;
-; Total pins                      ; 106                                             ;
+; Logic utilization (in ALMs)     ; 42 / 32,070 ( < 1 % )                           ;
+; Total registers                 ; 92                                              ;
+; Total pins                      ; 106 / 457 ( 23 % )                              ;
 ; Total virtual pins              ; 0                                               ;
-; Total block memory bits         ; 0                                               ;
-; Total DSP Blocks                ; 0                                               ;
+; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                           ;
+; Total DSP Blocks                ; 0 / 87 ( 0 % )                                  ;
 ; Total HSSI RX PCSs              ; 0                                               ;
 ; Total HSSI PMA RX Deserializers ; 0                                               ;
 ; Total HSSI TX PCSs              ; 0                                               ;
 ; Total HSSI PMA TX Serializers   ; 0                                               ;
-; Total PLLs                      ; 0                                               ;
-; Total DLLs                      ; 0                                               ;
+; Total PLLs                      ; 0 / 6 ( 0 % )                                   ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
 +---------------------------------+-------------------------------------------------+
 
 
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/16/2024 18:10:17 ;
+; Start date & time ; 05/16/2024 18:52:06 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ReCOP               ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+--------------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name        ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+--------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 224948461117244.171583981614568        ; --            ; --                 ; --         ;
+; COMPILER_SIGNATURE_ID               ; 224948461117244.171584232622056        ; --            ; --                 ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --                 ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --                 ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; fetch_with_control ; Top        ;
@@ -96,8 +96,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:17     ; 1.0                     ; 4910 MB             ; 00:00:03                           ;
-; Total                ; 00:00:17     ; --                      ; --                  ; 00:00:03                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4896 MB             ; 00:00:04                           ;
+; Fitter               ; 00:01:00     ; 1.0                     ; 8031 MB             ; 00:00:56                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 4841 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:08     ; 1.1                     ; 5297 MB             ; 00:00:02                           ;
+; Total                ; 00:01:25     ; --                      ; --                  ; 00:01:04                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -107,6 +110,9 @@ refer to the applicable agreement for further details.
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; EN441225         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; EN441225         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; EN441225         ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; EN441225         ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -114,6 +120,9 @@ refer to the applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off ReCOP -c ReCOP
+quartus_fit --read_settings_files=off --write_settings_files=off ReCOP -c ReCOP
+quartus_asm --read_settings_files=off --write_settings_files=off ReCOP -c ReCOP
+quartus_sta ReCOP -c ReCOP
 
 
 
