@@ -95,7 +95,8 @@ begin
                 wr_en <= '0';
                 next_state <= T1;
 
-            -- Start of T1_2    
+            -- Start of T1    
+            -- First half Fetch instructions
             when T1 =>
                 pc_write <= '1';             
                 ir_write <= '1';            
@@ -126,6 +127,7 @@ begin
                 next_state <= T1_2;   
 
             -- Start of T1_2 
+            -- Second half Fetch instructions 
             when T1_2 => 
                 if addressing_mode = "01" or addressing_mode = "10" then
                     check_AM <= '1';
@@ -160,47 +162,90 @@ begin
 
                 next_state <= T2;
 
-            -- Start of T2
+            -- Decode instructions / setup execution 
             when T2 => 
-                pc_write <= '0';
-                ir_write <= '0';
-            
-                if Opcode = "001000" then
-                    Op1_write <= '1';
-                    Op1_mux_select <= "01"; -- Rz
-                    Op2_write <= '1';
-                    Op2_mux_select <= "11"; -- Rx
-                    alu_operation <= "010"; -- ALU AND operation
-                elsif Opcode = "001100" then
-                    Op1_write <= '1';
-                    Op1_mux_select <= "10"; -- Rz
-                    Op2_write <= '1';
-                    Op2_mux_select <= "11"; -- Rx
-                    alu_operation <= "011"; -- ALU OR operation
-                elsif Opcode = "111000" then
-                    Op1_write <= '1';
-                    Op1_mux_select <= "10"; -- Rz
-                    Op2_write <= '1';
-                    Op2_mux_select <= "11"; -- Rx
-                    alu_operation <= "000"; -- ALU ADD operation
-                elsif Opcode = "000100" then
-                    Op1_write <= '1';
-                    Op1_mux_select <= "10"; -- Rz
-                    Op2_write <= '1';
-                    Op2_mux_select <= "11"; -- Rx
-                    alu_operation <= "001"; -- ALU SUB operation
-					 elsif Opcode = "011000" then -- JMP NEED TO FINISH THIS 
-					 
-							
-                else
-                    -- Reset outputs if no valid opcode
-                    alu_op1_sel <= "00";
-                    alu_op2_sel <= '0';
-                    alu_operation <= "000";
-					 
-                end if;
+                case Opcode is
+                    when ldr =>  -- Load
+                        alu_operation <= "000"; -- No ALU operation, just load
+                        Op1_mux_select <= "10"; --  Rz
+                        Op2_mux_select <= "11"; --  Rx
+                        next_state <= T3;      -- Move to execute to perform load
 
-                next_state <= T3;
+                    when str =>  -- Store
+                        alu_operation <= "000"; -- No ALU operation, just store
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T4;      -- Move to store
+
+                    when jmp =>  -- Jump
+                        alu_operation <= "000"; -- No ALU operation, just jump
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T4;      -- Perform jump in T4
+
+                    when present =>  -- Conditional execution
+                        alu_operation <= "000"; -- No ALU 
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T4;  
+
+                    when andr =>  -- AND
+                        alu_operation <= "010"; -- AND 
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T3;
+
+                    when orr =>  -- OR
+                        alu_operation <= "011"; -- OR 
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T3;
+
+                    when addr =>  -- ADD
+                        alu_operation <= "000"; -- ADD 
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T3;
+
+                    when subr =>  -- SUB
+                        alu_operation <= "001"; -- SUB 
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T3;
+
+                    when subvr =>  -- SUBV
+                        alu_operation <= "001"; -- ALU SUB operation with overflow
+                        Op1_mux_select <= "10";
+                        Op2_mux_select <= "11";
+                        next_state <= T3;
+
+                    when clfz =>  -- Clear Flag Zero
+                        clr_z_flag <= '1';  
+                        next_state <= T4;      -- Clear flag and continue
+
+                    when ssop =>  -- Set SOP
+                        sop_wr <= '1';  
+                        next_state <= T4;
+
+                    when lsip =>  -- Load SIP
+                        irq_wr <= '1';
+                        next_state <= T4;
+
+                    when sz =>  -- Set Zero
+                        Op1_mux_select <= "10";  -- Setup for condition check
+                        next_state <= T4;
+
+                    when strpc =>  -- Store PC
+                        -- idk what to do here man
+                        next_state <= T4;
+
+                    when others => 
+                        -- Reset outputs if no valid opcode
+                        alu_op1_sel <= "00";
+                        alu_op2_sel <= '0';
+                        alu_operation <= "000";
+                        next_state <= init;  -- Return to init or handle as error
+                end case;
 
             -- Start of T3
             when T3 =>
