@@ -58,7 +58,7 @@ architecture beh of registers is
 				-- write to dpcr. lower byte depends on select signal
 				case dpcr_lsb_sel is
 				when '0' =>
-					dpcr <= rx&r7;
+					dpcr <= r7&rx;
 				when '1' =>
 					dpcr <= rx&ir_operand;
 				when others =>

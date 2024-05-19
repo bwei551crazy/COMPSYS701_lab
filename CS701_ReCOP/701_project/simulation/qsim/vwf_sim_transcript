@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off ReCOP -c ReCOP --vector_source="C:/Users/brian/Documents/701_project/fetch_control_test.vwf" --testbench_file="C:/Users/brian/Documents/701_project/simulation/qsim/fetch_control_test.vwf.vht"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off ReCOP -c ReCOP --vector_source="C:/Users/brian/Documents/701_project/fetch_decode_execute_load_test.vwf" --testbench_file="C:/Users/brian/Documents/701_project/simulation/qsim/fetch_decode_execute_load_test.vwf.vht"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -25,12 +25,10 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Wed May 15 22:49:43 2024
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off ReCOP -c ReCOP --vector_source=C:/Users/brian/Documents/701_project/fetch_control_test.vwf --testbench_file=C:/Users/brian/Documents/701_project/simulation/qsim/fetch_control_test.vwf.vht
+    Info: Processing started: Sun May 19 15:33:28 2024
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off ReCOP -c ReCOP --vector_source=C:/Users/brian/Documents/701_project/fetch_decode_execute_load_test.vwf --testbench_file=C:/Users/brian/Documents/701_project/simulation/qsim/fetch_decode_execute_load_test.vwf.vht
 Info (119006): Selected device 5CSEMA5F31C6 for design "ReCOP"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-
-ile when writing test bench files
 
 Completed successfully. 
 
@@ -54,15 +52,15 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Wed May 15 22:49:46 2024
+    Info: Processing started: Sun May 19 15:33:30 2024
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=C:/Users/brian/Documents/701_project/simulation/qsim/ ReCOP -c ReCOP
 Info (119006): Selected device 5CSEMA5F31C6 for design "ReCOP"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file ReCOP.vho in folder "C:/Users/brian/Documents/701_project/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4717 megabytes
-    Info: Processing ended: Wed May 15 22:49:48 2024
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 4723 megabytes
+    Info: Processing ended: Sun May 19 15:33:31 2024
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 Completed successfully. 
@@ -81,12 +79,11 @@ Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
 
 # 10.5b
 
-
 # do ReCOP.do
-# ** Warning: (vlib-34) Library already exists at "work".
 
+# ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:49:50 on May 15,2024
+# Start time: 15:33:31 on May 19,2024
 # vcom -work work ReCOP.vho 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -96,33 +93,31 @@ Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
 # -- Loading package dffeas_pack
 # -- Loading package altera_primitives_components
 # -- Loading package altera_lnsim_components
-
 # -- Loading package cyclonev_atom_pack
 # -- Loading package cyclonev_components
-# -- Compiling entity fetch_with_control
-# -- Compiling architecture structure of fetch_with_control
+# -- Compiling entity fetch_decode_control
+# -- Compiling architecture structure of fetch_decode_control
 
-# End time: 22:49:50 on May 15,2024, Elapsed time: 0:00:00
+# End time: 15:33:32 on May 19,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:49:50 on May 15,2024
-# vcom -work work fetch_control_test.vwf.vht 
-# -- Loading package STANDARD
 
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:33:32 on May 19,2024
+# vcom -work work fetch_decode_execute_load_test.vwf.vht 
+# -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity fetch_with_control_vhd_vec_tst
-# -- Compiling architecture fetch_with_control_arch of fetch_with_control_vhd_vec_tst
-
-# End time: 22:49:50 on May 15,2024, Elapsed time: 0:00:00
+# -- Compiling entity fetch_decode_control_vhd_vec_tst
+# -- Compiling architecture fetch_decode_control_arch of fetch_decode_control_vhd_vec_tst
+# End time: 15:33:32 on May 19,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
-# vsim -novopt -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.fetch_with_control_vhd_vec_tst 
-# Start time: 22:49:50 on May 15,2024
+# vsim -novopt -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.fetch_decode_control_vhd_vec_tst 
+# Start time: 15:33:32 on May 19,2024
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
-# Loading work.fetch_with_control_vhd_vec_tst(fetch_with_control_arch)
+# Loading work.fetch_decode_control_vhd_vec_tst(fetch_decode_control_arch)
 # Loading ieee.vital_timing(body)
 # Loading ieee.vital_primitives(body)
 # Loading altera.dffeas_pack
@@ -130,30 +125,37 @@ Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
 # Loading altera_lnsim.altera_lnsim_components
 # Loading cyclonev.cyclonev_atom_pack(body)
 # Loading cyclonev.cyclonev_components
-# Loading work.fetch_with_control(structure)
+# Loading work.fetch_decode_control(structure)
 # Loading ieee.std_logic_arith(body)
 # Loading cyclonev.cyclonev_io_obuf(arch)
 # Loading cyclonev.cyclonev_io_ibuf(arch)
 # Loading cyclonev.cyclonev_lcell_comb(vital_lcell_comb)
 # Loading altera.dffeas(vital_dffeas)
-# ** Warning: Design size of 29511 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Loading cyclonev.cyclonev_ram_block(block_arch)
+# Loading sv_std.std
+# Loading altera_lnsim.generic_m10k
+# Loading altera_lnsim.altera_lnsim_functions
+# Loading altera_lnsim.common_28nm_ram_block
+# Loading altera_lnsim.common_28nm_ram_register
+# Loading altera_lnsim.common_28nm_ram_pulse_generator
+# ** Warning: Design size of 181404 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
 # Expect performance to be adversely affected.
 # after#34
 
-# End time: 22:49:51 on May 15,2024, Elapsed time: 0:00:01
+# End time: 15:33:33 on May 19,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 1
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading C:/Users/brian/Documents/701_project/fetch_control_test.vwf...
+Reading C:/Users/brian/Documents/701_project/fetch_decode_execute_load_test.vwf...
 
 Reading C:/Users/brian/Documents/701_project/simulation/qsim/ReCOP.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to C:/Users/brian/Documents/701_project/simulation/qsim/ReCOP_20240515224951.sim.vwf
+Writing the resulting VWF to C:/Users/brian/Documents/701_project/simulation/qsim/ReCOP_20240519153333.sim.vwf
 
 Finished VCD to VWF conversion.
 

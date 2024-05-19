@@ -8,8 +8,8 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/brian/Documents/701_project/simulation/qsim
-Efetch_testbench
-Z1 w1715564181
+Efetch_decode_control
+Z1 w1716089611
 Z2 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 OGn598C_0mX<WSGfCb?AK2
 Z3 DPx8 cyclonev 19 cyclonev_components 0 22 CcdNAEi>PYH4@n><]NQ]V2
 Z4 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 QZo1Vh6en2ZO3=hNmAfQ>0
@@ -24,18 +24,110 @@ Z11 8ReCOP.vho
 Z12 FReCOP.vho
 l0
 L38
-V[Iz1VHHZUN<BMAP?0DUH@2
-!s100 `fTgh]aK8@Z4Q9HeY6Ez00
+V[2mK30I^:;ae9Qgcj8B@z3
+!s100 6C:Vf<XV5?V^?SE2L4Zjz2
 Z13 OV;C;10.5b;63
 32
-Z14 !s110 1715564182
+!s110 1716089611
 !i10b 1
-Z15 !s108 1715564182.000000
-Z16 !s90 -work|work|ReCOP.vho|
-Z17 !s107 ReCOP.vho|
+Z14 !s108 1716089611.000000
+Z15 !s90 -work|work|ReCOP.vho|
+Z16 !s107 ReCOP.vho|
 !i113 1
-Z18 o-work work
-Z19 tExplicit 1 CvgOpt 0
+Z17 o-work work
+Z18 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R10
+DEx4 work 20 fetch_decode_control 0 22 [2mK30I^:;ae9Qgcj8B@z3
+l1843
+L82
+VB=dC1]ShaYSLobAo@^MoO0
+!s100 d[e;nVDSWCVl3mhmFAWE<2
+R13
+32
+Z19 !s110 1716089612
+!i10b 1
+R14
+R15
+R16
+!i113 1
+R17
+R18
+Efetch_decode_control_vhd_vec_tst
+Z20 w1716089609
+R8
+R9
+R0
+Z21 8fetch_decode_execute_load_test.vwf.vht
+Z22 Ffetch_decode_execute_load_test.vwf.vht
+l0
+L31
+VmnG3K7P_;ZP=Jg1R7f43N0
+!s100 0gaI_S11@2l4W1Vnb6LRi0
+R13
+32
+R19
+!i10b 1
+Z23 !s108 1716089612.000000
+Z24 !s90 -work|work|fetch_decode_execute_load_test.vwf.vht|
+Z25 !s107 fetch_decode_execute_load_test.vwf.vht|
+!i113 1
+R17
+R18
+Afetch_decode_control_arch
+R8
+R9
+Z26 DEx4 work 32 fetch_decode_control_vhd_vec_tst 0 22 mnG3K7P_;ZP=Jg1R7f43N0
+l118
+L33
+Z27 VnL^iPGl9X3GCh@<nCVVTN0
+Z28 !s100 NlV6M>o7_4Q74:4db0jea3
+R13
+32
+R19
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R17
+R18
+Efetch_testbench
+Z29 w1715564181
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R10
+R0
+R11
+R12
+l0
+L38
+V[Iz1VHHZUN<BMAP?0DUH@2
+!s100 `fTgh]aK8@Z4Q9HeY6Ez00
+R13
+32
+Z30 !s110 1715564182
+!i10b 1
+Z31 !s108 1715564182.000000
+R15
+R16
+!i113 1
+R17
+R18
 Astructure
 R2
 R3
@@ -53,35 +145,35 @@ Vj:QQ5LcHU<cRokAO:;TNC1
 !s100 JAm70HB<SBo@AFOH3gGGB0
 R13
 32
-R14
+R30
 !i10b 1
+R31
 R15
 R16
-R17
 !i113 1
+R17
 R18
-R19
 Efetch_testbench_vhd_vec_tst
-Z20 w1715564180
+Z32 w1715564180
 R8
 R9
 R0
-Z21 8test.vwf.vht
-Z22 Ftest.vwf.vht
+Z33 8test.vwf.vht
+Z34 Ftest.vwf.vht
 l0
 L31
 V[d3gClA?ajUo:n>CiC[>P3
 !s100 3RgcgnCL?jiz4a>b^TAWj1
 R13
 32
-R14
+R30
 !i10b 1
-R15
-Z23 !s90 -work|work|test.vwf.vht|
-Z24 !s107 test.vwf.vht|
+R31
+Z35 !s90 -work|work|test.vwf.vht|
+Z36 !s107 test.vwf.vht|
 !i113 1
+R17
 R18
-R19
 Afetch_testbench_arch
 R8
 R9
@@ -92,16 +184,16 @@ V9T3CXE0A1K]LAB^mGAM7P3
 !s100 VCc4KkP>M[=>zzz7>FaXD3
 R13
 32
-R14
+R30
 !i10b 1
-R15
-R23
-R24
+R31
+R35
+R36
 !i113 1
+R17
 R18
-R19
 Efetch_with_control
-Z25 w1715770188
+Z37 w1715770188
 R2
 R3
 R4
@@ -120,14 +212,14 @@ VggmUk>cTRnBX9AdRSTe[23
 !s100 S:aY6`WUFXQJ>igAL]HIB3
 R13
 32
-Z26 !s110 1715770190
+Z38 !s110 1715770190
 !i10b 1
-Z27 !s108 1715770190.000000
+Z39 !s108 1715770190.000000
+R15
 R16
-R17
 !i113 1
+R17
 R18
-R19
 Astructure
 R2
 R3
@@ -145,55 +237,55 @@ VA^`]QjBR9?djVJ>h:671k3
 !s100 e@<W:UkX2Z^US`[1EL;NF2
 R13
 32
-R26
+R38
 !i10b 1
-R27
+R39
+R15
 R16
-R17
 !i113 1
+R17
 R18
-R19
 Efetch_with_control_vhd_vec_tst
-Z28 w1715770185
+Z40 w1715770185
 R8
 R9
 R0
-Z29 8fetch_control_test.vwf.vht
-Z30 Ffetch_control_test.vwf.vht
+Z41 8fetch_control_test.vwf.vht
+Z42 Ffetch_control_test.vwf.vht
 l0
 L31
 Vn[z1Lhk1Kg8bdNnFZENY91
 !s100 4fWj>nmR]h:]k<B8Xn<V]2
 R13
 32
-R26
+R38
 !i10b 1
-R27
-Z31 !s90 -work|work|fetch_control_test.vwf.vht|
-Z32 !s107 fetch_control_test.vwf.vht|
+R39
+Z43 !s90 -work|work|fetch_control_test.vwf.vht|
+Z44 !s107 fetch_control_test.vwf.vht|
 !i113 1
+R17
 R18
-R19
 Afetch_with_control_arch
 R8
 R9
-Z33 DEx4 work 30 fetch_with_control_vhd_vec_tst 0 22 n[z1Lhk1Kg8bdNnFZENY91
+DEx4 work 30 fetch_with_control_vhd_vec_tst 0 22 n[z1Lhk1Kg8bdNnFZENY91
 l72
 L33
-Z34 Vz1D[^>j7lE1VK7A0K85aO3
-Z35 !s100 J[b^n9hGe^d1IjF2JHo^L3
+Vz1D[^>j7lE1VK7A0K85aO3
+!s100 J[b^n9hGe^d1IjF2JHo^L3
 R13
 32
-R26
+R38
 !i10b 1
-R27
-R31
-R32
+R39
+R43
+R44
 !i113 1
+R17
 R18
-R19
 Eprogram_counter_testbench
-Z36 w1715326778
+Z45 w1715326778
 R2
 R3
 R4
@@ -212,14 +304,14 @@ VHZFPQbU_Z;AIzhki9JZag1
 !s100 @7kKiEiYWVWW060cCc>kB2
 R13
 32
-Z37 !s110 1715326779
+Z46 !s110 1715326779
 !i10b 1
-Z38 !s108 1715326779.000000
+Z47 !s108 1715326779.000000
+R15
 R16
-R17
 !i113 1
+R17
 R18
-R19
 Astructure
 R2
 R3
@@ -237,35 +329,35 @@ VUccJ:AIUK:W?>_RLDPo[U0
 !s100 ePI;0neA=zg;R6_[3gXBd0
 R13
 32
-R37
+R46
 !i10b 1
-R38
+R47
+R15
 R16
-R17
 !i113 1
+R17
 R18
-R19
 Eprogram_counter_testbench_vhd_vec_tst
-Z39 w1715326776
+Z48 w1715326776
 R8
 R9
 R0
-R21
-R22
+R33
+R34
 l0
 L31
 VdkT@QC2UAhT4N6X6S>6b31
 !s100 e;MZhE<d@z12PGZ?iY:eK3
 R13
 32
-R37
+R46
 !i10b 1
-R38
-R23
-R24
+R47
+R35
+R36
 !i113 1
+R17
 R18
-R19
 Aprogram_counter_testbench_arch
 R8
 R9
@@ -276,11 +368,11 @@ Vj:z[f?dSX[Bn[L^8GDM>_0
 !s100 ?_5YUO][h7A?WI@JcaSB_2
 R13
 32
-R37
+R46
 !i10b 1
-R38
-R23
-R24
+R47
+R35
+R36
 !i113 1
+R17
 R18
-R19

@@ -42,10 +42,11 @@ architecture behaviour of program_counter is
 		
 	signal mux_out 		: bit_16;
 	signal pc_counter		: bit_16 := x"0000";
+	signal pc_increment 	: bit_16;
 begin
 	PC_Mux_16: Mux3_16 port map (
 		mux3_sel => mux_sel,
-		a => pc_counter,
+		a => pc_counter + 1,  --to fix the instant increment that happens to jump instructions. 
 		b => Op1_out,  --As long as the PC option isn't selected, should not have conflicts
 		c => present_out,
 		mux3_out => mux_out
@@ -59,14 +60,17 @@ begin
 --		Reg_write => pc_write
 --	);
 	process(clock) 
-		variable pc_increment : bit_16;
+		variable pc_increment : bit_16 := x"0000";
 	begin
 		if reset = '1' then
-			pc_increment := x"0000";
+		
+			pc_counter <= x"0000";--pc_increment;
+			
 		elsif rising_edge(clock) then
-				pc_increment := mux_out + 1;
+		
 			if pc_write = '1' then
-				pc_counter <= pc_increment;
+				pc_counter <= mux_out; --pc_increment;
+				
 			end if;
 		end if;
 	end process;

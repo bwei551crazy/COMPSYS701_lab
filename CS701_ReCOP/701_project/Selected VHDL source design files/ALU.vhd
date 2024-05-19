@@ -23,6 +23,7 @@ entity alu is
 		--alu_op2_sel		: in bit_1;
 		--alu_carry		: in bit_1;  --WARNING: carry in currently is not used
 		alu_result		: out bit_16 := X"0000";
+		alu_result_prev: out bit_16 := x"0000";
 		-- operands
 --		rx				: in bit_16;
 --		rz				: in bit_16;
@@ -36,7 +37,7 @@ end alu;
 architecture combined of alu is
 	--signal operand_1	: bit_16;
 	--signal operand_2	: bit_16;
-	signal prev_result		: bit_16;
+	signal prev_result		: bit_16 := x"0000";
 	signal result				: bit_16;
 begin
 	--MUX selecting first operand
@@ -73,20 +74,27 @@ begin
 		case alu_operation is
 			when alu_add =>
 				result <= operand_2 + operand_1;
+				prev_result <= result;      --Ensures that the alu value is holded whilst in idle state.
 			when alu_sub =>
 				result <= operand_2 - operand_1;
+				prev_result <= result;
 			when alu_and =>
 				result <= operand_2 and operand_1;
+				prev_result <= result;
 			when alu_or =>
 				result <= operand_2 or operand_1;
+				prev_result <= result;
 			when alu_idle =>
 				result <= prev_result;
+				prev_result <= result;
 			when others =>
 				result <= X"0000";
+				prev_result <= result;
 		end case;
 	end process alu;
 	alu_result <= result;
-	prev_result <= result; --Ensures that the alu value is holded whilst in idle state. 
+	--alu_result_prev <= prev_result; --Used for debugging purposes. 
+	
 
 	-- zero flag
 	z1gen: process (clk)
@@ -97,7 +105,8 @@ begin
 			if clr_z_flag = '1' then
 				z_flag <= '0';
 			-- if alu is working (operation is valid)
-			elsif alu_operation(2) = '0' then
+			--For add, sub and idle states, if result is 0, raise zero flag
+			elsif alu_operation(2) = '0' then 
 				if result = X"0000" then
 					z_flag <= '1';
 				else

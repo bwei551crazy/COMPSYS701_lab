@@ -22,7 +22,7 @@ entity control_unit is
 		check_AM				: out bit_1;
 		
 		rf_input_sel 		: out bit_3;
-		reg_init 			: out bit_1; 	--for resetting, not initialising. 
+--		reg_init 			: out bit_1; 	--for resetting, not initialising. 
 		ld_r 					: out bit_1;
 		dprr_res 			: out bit_1;   --These dprr not sure if needed due to irq requirements
 		dprr_res_reg 		: out bit_1;
@@ -73,7 +73,7 @@ begin
 			
 				--Control signal to PC block
 				pc_write <= '0';
-				pc_mux_sel <= "000";
+				pc_mux_sel <= "00";
 				
 				--control signal to IR block
 				ir_write <= '0';
@@ -81,7 +81,7 @@ begin
 				
 				--control signal to RF block
 				rf_input_sel <= "000";
-				reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
+				--reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
 				ld_r <= '0';
 				dprr_res <= '0'; --Reset DPRR
 				dprr_res_reg <= '0'; --Reset DPRR register
@@ -115,7 +115,7 @@ begin
 				
 			when T1 =>
 				pc_write <= '0';
-				pc_mux_sel <= "000";
+				pc_mux_sel <= "00";
 				
 				--control signal to IR block
 				ir_write <= '0';
@@ -123,7 +123,7 @@ begin
 				
 				--control signal to RF block
 				rf_input_sel <= "000";
-				reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
+				--reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
 				ld_r <= '0';
 				dprr_res <= '0'; --Reset DPRR
 				dprr_res_reg <= '0'; --Reset DPRR register
@@ -152,6 +152,7 @@ begin
 				Op2_write 			<= '0';
 				Op1_mux_select		<= "00";
 				Op2_mux_select 	<= "00"; 
+				alu_operation <= alu_idle;
 				
 
 				--Start fetching 1st 16 bit instruction
@@ -164,7 +165,7 @@ begin
 			
 				--Control signal to PC block
 				pc_write <= '0';
-				pc_mux_sel <= "000";
+				pc_mux_sel <= "00";
 				
 				--control signal to IR block
 				ir_write <= '0';
@@ -172,7 +173,7 @@ begin
 				
 				--control signal to RF block
 				rf_input_sel <= "000";
-				reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
+				--reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
 				ld_r <= '0';
 				dprr_res <= '0'; --Reset DPRR
 				dprr_res_reg <= '0'; --Reset DPRR register
@@ -201,6 +202,7 @@ begin
 				Op2_write 			<= '0';
 				Op1_mux_select		<= "00";
 				Op2_mux_select 	<= "00";
+				alu_operation <= alu_idle;
 				
 				--Deciding whether to fetch the next 16 bits if it is operand
 				if addressing_mode = "01" then  --immediate
@@ -222,7 +224,7 @@ begin
 			when T2 => 
 				--Control signal to PC block
 				pc_write <= '0';
-				pc_mux_sel <= "000";
+				pc_mux_sel <= "00";
 				
 				--control signal to IR block
 				ir_write <= '0';
@@ -230,7 +232,7 @@ begin
 				
 				--control signal to RF block
 				rf_input_sel <= "000";
-				reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
+				--reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
 				ld_r <= '0';
 				dprr_res <= '0'; --Reset DPRR
 				dprr_res_reg <= '0'; --Reset DPRR register
@@ -259,6 +261,7 @@ begin
 				Op2_write 			<= '0';
 				Op1_mux_select		<= "00";
 				Op2_mux_select 	<= "00";
+				alu_operation <= alu_idle;
 				
 				--Decoding and setting up for execution. 
 				case Opcode is
@@ -300,14 +303,14 @@ begin
 						Op1_write <= '0';
 						Op2_write <= '0';
 						case addressing_mode is 
-							when "01" =>   -- Immediate
+							when "01" =>   -- Immediate  op1 + op2
 								Op1_write <= '1';
 								Op1_mux_select <= "01";  --Rx
 								Op2_write <= '1';
 								Op2_mux_select <= "11";	 --Operand
-							when "11" =>	-- Register
+							when "11" =>	-- Register    op1 + op2 
 								Op1_write <= '1';
-								Op1_mux_select <= "01";
+								Op1_mux_select <= "01";  
 								Op2_write <= '1';
 								Op2_mux_select <= "10";  --Rz
 							when others =>
@@ -317,11 +320,11 @@ begin
 						Op1_write <= '0';
 						Op2_write <= '0';
 						case addressing_mode is 
-							when "01" =>   -- Immediate
+							when "01" =>   -- Immediate    op2 - op1
 								Op1_write <= '1';
-								Op1_mux_select <= "10";  --Rz
+								Op1_mux_select <= "11";	 --Operand								
 								Op2_write <= '1';
-								Op2_mux_select <= "11";	 --Operand
+								Op2_mux_select <= "10";  --Rz
 							when others =>
 						end case;
 					
@@ -329,11 +332,11 @@ begin
 						Op1_write <= '0';
 						Op2_write <= '0';
 						case addressing_mode is 
-							when "01" =>   -- Immediate
+							when "01" =>   -- Immediate     op2-op1
 								Op1_write <= '1';
-								Op1_mux_select <= "01";  --Rx
+								Op1_mux_select <= "11";  --Operand
 								Op2_write <= '1';
-								Op2_mux_select <= "11";	 --Operand
+								Op2_mux_select <= "10";	 --Rx
 							when others =>
 						end case;
 					
@@ -423,7 +426,7 @@ begin
 						Op2_write <= '0';
 						case addressing_mode is
 							when "01" => --Immediate
-								Op1_write <= '0';
+								Op1_write <= '1';
 								Op1_mux_select <= "11"; --operand
 							when others =>
 						end case;
@@ -463,8 +466,9 @@ begin
 						Op2_write <= '0';
 						case addressing_mode is
 							when "11" => --register
-								Op1_write <= '1';
-								Op1_mux_select <= "01"; --Rx
+								Op2_write <= '1';
+								Op2_mux_select <= "01"; --Rx
+								--sop_wr <= '1';
 							when others =>
 						end case;
 					
@@ -476,6 +480,8 @@ begin
 							
 							when others =>
 						end case;
+					when others =>
+						
 					end case;
 				
 					next_state <= T3;
@@ -483,7 +489,7 @@ begin
 			when T3 =>
 				--Control signal to PC block
 				pc_write <= '0';
-				pc_mux_sel <= "000";
+				pc_mux_sel <= "00";
 				
 				--control signal to IR block
 				ir_write <= '0';
@@ -491,7 +497,7 @@ begin
 				
 				--control signal to RF block
 				rf_input_sel <= "000";
-				reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
+				--reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
 				ld_r <= '0';
 				dprr_res <= '0'; --Reset DPRR
 				dprr_res_reg <= '0'; --Reset DPRR register
@@ -524,19 +530,29 @@ begin
 				case Opcode is
 					when andr =>
 						alu_operation <= alu_and;
+						ld_r <= '1';
+						rf_input_sel <= "011";
 						
 					when orr => 
 						alu_operation <= alu_or;
+						ld_r <= '1';
+						rf_input_sel <= "011";
 						
 					when addr => 
 						alu_operation <= alu_add;
-					
-					when subr => 
+						ld_r <= '1';
+						rf_input_sel <= "011";
+						
+					when subr => --This instruction has zero store. 
 						alu_operation <= alu_sub;
-					
+						--ld_r <= '1';
+						--rf_input_sel <= "011";
+						
 					when subvr =>
 						alu_operation <= alu_sub;
-					
+						ld_r <= '1';
+						rf_input_sel <= "011";
+						
 					when ldr => 
 						alu_operation <= alu_idle;
 						case addressing_mode is
@@ -568,9 +584,11 @@ begin
 						alu_operation <= alu_idle;
 						case addressing_mode is 
 							when "01" => --Immediate
-								pc_mux_sel <= "01"; --Chooses output of Op1 register (which should be operand) as the new pc						
+--								pc_mux_sel <= "01"; --Chooses output of Op1 register (which should be operand) as the new pc	
+--								pc_write <= '1';
 							when "11" => -- Register
-								pc_mux_sel <= "01"; --Also from op1 register but should be Rx instead for new pc
+--								pc_mux_sel <= "01"; --Also from op1 register but should be Rx instead for new pc
+--								pc_write <= '1';
 							when others => 
 						end case;
 					
@@ -606,9 +624,10 @@ begin
 						alu_operation <= alu_idle;
 						case addressing_mode is
 							when "01" => --Immediate
-								if z_flag = '1' then
-									pc_mux_sel <=  "01";
-								end if;
+--								if z_flag = '1' then
+--									pc_mux_sel <=  "01";
+--									pc_write <= '1';
+--								end if;
 							when others =>
 						end case;
 					
@@ -634,6 +653,7 @@ begin
 						case addressing_mode is 
 							when "11" => --Register
 								rf_input_sel <= "101"; --Selects the sip register and store its contents
+								ld_r <='1';
 							when others => 
 						end case;
 					
@@ -652,6 +672,8 @@ begin
 							
 							when others =>
 						end case;
+					when others =>
+					
 				end case;
 				
 				next_state <= T4;
@@ -660,7 +682,7 @@ begin
 				--Writeback and extra state for more time for instructions to finish. 
 				--Control signal to PC block
 				pc_write <= '0';
-				pc_mux_sel <= "000";
+				pc_mux_sel <= "00";
 				
 				--control signal to IR block
 				ir_write <= '0';
@@ -668,7 +690,7 @@ begin
 				
 				--control signal to RF block
 				rf_input_sel <= "000";
-				reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
+				--reg_init <= '1'; --This is actually a reset. 1 for reset. 0 for not reset
 				ld_r <= '0';
 				dprr_res <= '0'; --Reset DPRR
 				dprr_res_reg <= '0'; --Reset DPRR register
@@ -701,29 +723,28 @@ begin
 				alu_operation <= alu_idle;
 				case Opcode is
 					when andr =>
-						rf_input_sel <= "011"; --Selects aluout for storing
-						ld_r <= '1';
+						--rf_input_sel <= "011"; --Selects aluout for storing
+						--ld_r <= '1';
 					when orr => 
-						rf_input_sel <= "011";
-						ld_r <= '1';
-						
+						--rf_input_sel <= "011";
+						--ld_r <= '1';
 					when addr => 
-						rf_input_sel <= "011";
-						ld_r <= '1';
+						--rf_input_sel <= "011";
+						--ld_r <= '1';
 					
 					when subr => 
-						rf_input_sel <= "011";
-						ld_r <= '1';
+						--rf_input_sel <= "011";
+						--ld_r <= '1';
 					
 					when subvr =>
-						rf_input_sel <= "011";
-						ld_r <= '1';
+						--rf_input_sel <= "011";
+						--ld_r <= '1';
 					
 						--for additional time to load from memory and store in Rz
 					when ldr => 
 						case addressing_mode is
 							when "01" => --Immediate
-							
+								--ld_r <='1';
 							when "11" => --Register
 
 							when "10" => --Direct
@@ -746,8 +767,10 @@ begin
 						alu_operation <= alu_idle;
 						case addressing_mode is 
 							when "01" => --Immediate
+								pc_mux_sel <= "01";
 								pc_write <= '1'; --Start the pc_counter, not sure if logic is correct here. 
 							when "11" => -- Register
+								pc_mux_sel <= "01";
 								pc_write <= '1'; 
 							when others => 
 						end case;
@@ -774,7 +797,10 @@ begin
 
 						case addressing_mode is
 							when "01" => --Immediate
-							
+								if z_flag = '1' then
+									pc_mux_sel <=  "01";
+									pc_write <= '1';
+								end if;
 							when others =>
 						end case;
 					
@@ -817,10 +843,12 @@ begin
 							
 							when others =>
 						end case;
+					when others =>
+					
 				end case;
+				next_state <= T1; 
 		end case;
 		
-		next_state <= T1; 
 		
 	end process;
 				

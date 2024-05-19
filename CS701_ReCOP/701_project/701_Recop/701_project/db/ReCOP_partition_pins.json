@@ -1,0 +1,485 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "AM[1]",
+					"strict" : false
+				},
+				{
+					"name" : "AM[0]",
+					"strict" : false
+				},
+				{
+					"name" : "op[15]",
+					"strict" : false
+				},
+				{
+					"name" : "op[14]",
+					"strict" : false
+				},
+				{
+					"name" : "op[13]",
+					"strict" : false
+				},
+				{
+					"name" : "op[12]",
+					"strict" : false
+				},
+				{
+					"name" : "op[11]",
+					"strict" : false
+				},
+				{
+					"name" : "op[10]",
+					"strict" : false
+				},
+				{
+					"name" : "op[9]",
+					"strict" : false
+				},
+				{
+					"name" : "op[8]",
+					"strict" : false
+				},
+				{
+					"name" : "op[7]",
+					"strict" : false
+				},
+				{
+					"name" : "op[6]",
+					"strict" : false
+				},
+				{
+					"name" : "op[5]",
+					"strict" : false
+				},
+				{
+					"name" : "op[4]",
+					"strict" : false
+				},
+				{
+					"name" : "op[3]",
+					"strict" : false
+				},
+				{
+					"name" : "op[2]",
+					"strict" : false
+				},
+				{
+					"name" : "op[1]",
+					"strict" : false
+				},
+				{
+					"name" : "op[0]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[5]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[4]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[3]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[2]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[1]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[0]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[15]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[14]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[13]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[12]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[11]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[10]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[9]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[8]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "PC_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[15]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[14]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[13]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[12]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[11]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[10]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[9]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[8]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[7]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[6]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[5]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[4]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[3]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[2]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[1]",
+					"strict" : false
+				},
+				{
+					"name" : "pm_outdata[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Rx_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Rx_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Rx_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Rx_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Rz_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Rz_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Rz_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Rz_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "check_AM",
+					"strict" : false
+				},
+				{
+					"name" : "clock",
+					"strict" : false
+				},
+				{
+					"name" : "ir_write",
+					"strict" : false
+				},
+				{
+					"name" : "rx[15]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[15]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[15]",
+					"strict" : false
+				},
+				{
+					"name" : "mux_sel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mux_sel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "pc_write",
+					"strict" : false
+				},
+				{
+					"name" : "rx[14]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[14]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[14]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[13]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[13]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[13]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[12]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[12]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[12]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[11]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[11]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[11]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[10]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[10]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[10]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[9]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[9]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[9]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[8]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[8]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[8]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[7]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[7]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[6]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[6]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[5]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[5]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[4]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[4]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[3]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[2]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[1]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rx[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ir[0]",
+					"strict" : false
+				},
+				{
+					"name" : "present_out[0]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

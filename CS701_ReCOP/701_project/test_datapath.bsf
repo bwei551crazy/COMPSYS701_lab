@@ -1,0 +1,253 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 16 16 272 528)
+	(text "fetch_decode_control" (rect 5 0 132 19)(font "Intel Clear" (font_size 8)))
+	(text "inst" (rect 8 491 24 508)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clock" (rect 0 0 29 19)(font "Intel Clear" (font_size 8)))
+		(text "clock" (rect 21 27 50 46)(font "Intel Clear" (font_size 8)))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "reset" (rect 0 0 29 19)(font "Intel Clear" (font_size 8)))
+		(text "reset" (rect 21 43 50 62)(font "Intel Clear" (font_size 8)))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "Sip_in[15..0]" (rect 0 0 76 19)(font "Intel Clear" (font_size 8)))
+		(text "Sip_in[15..0]" (rect 21 59 97 78)(font "Intel Clear" (font_size 8)))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 256 32)
+		(output)
+		(text "pm_outdata[15..0]" (rect 0 0 112 19)(font "Intel Clear" (font_size 8)))
+		(text "pm_outdata[15..0]" (rect 123 27 235 46)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 32)(pt 240 32)(line_width 3))
+	)
+	(port
+		(pt 256 48)
+		(output)
+		(text "PC_out[15..0]" (rect 0 0 81 19)(font "Intel Clear" (font_size 8)))
+		(text "PC_out[15..0]" (rect 154 43 235 62)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 48)(pt 240 48)(line_width 3))
+	)
+	(port
+		(pt 256 64)
+		(output)
+		(text "AM[1..0]" (rect 0 0 49 19)(font "Intel Clear" (font_size 8)))
+		(text "AM[1..0]" (rect 186 59 235 78)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 64)(pt 240 64)(line_width 3))
+	)
+	(port
+		(pt 256 80)
+		(output)
+		(text "opcode[5..0]" (rect 0 0 74 19)(font "Intel Clear" (font_size 8)))
+		(text "opcode[5..0]" (rect 161 75 235 94)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 80)(pt 240 80)(line_width 3))
+	)
+	(port
+		(pt 256 96)
+		(output)
+		(text "Rz_out[3..0]" (rect 0 0 70 19)(font "Intel Clear" (font_size 8)))
+		(text "Rz_out[3..0]" (rect 165 91 235 110)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 96)(pt 240 96)(line_width 3))
+	)
+	(port
+		(pt 256 112)
+		(output)
+		(text "Rx_out[3..0]" (rect 0 0 70 19)(font "Intel Clear" (font_size 8)))
+		(text "Rx_out[3..0]" (rect 165 107 235 126)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 112)(pt 240 112)(line_width 3))
+	)
+	(port
+		(pt 256 128)
+		(output)
+		(text "op[15..0]" (rect 0 0 54 19)(font "Intel Clear" (font_size 8)))
+		(text "op[15..0]" (rect 181 123 235 142)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 128)(pt 240 128)(line_width 3))
+	)
+	(port
+		(pt 256 144)
+		(output)
+		(text "rf_mux[2..0]" (rect 0 0 71 19)(font "Intel Clear" (font_size 8)))
+		(text "rf_mux[2..0]" (rect 164 139 235 158)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 144)(pt 240 144)(line_width 3))
+	)
+	(port
+		(pt 256 160)
+		(output)
+		(text "pc_write" (rect 0 0 50 19)(font "Intel Clear" (font_size 8)))
+		(text "pc_write" (rect 185 155 235 174)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 160)(pt 240 160))
+	)
+	(port
+		(pt 256 176)
+		(output)
+		(text "ir_write" (rect 0 0 44 19)(font "Intel Clear" (font_size 8)))
+		(text "ir_write" (rect 191 171 235 190)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 176)(pt 240 176))
+	)
+	(port
+		(pt 256 192)
+		(output)
+		(text "pc_mux_sel[1..0]" (rect 0 0 100 19)(font "Intel Clear" (font_size 8)))
+		(text "pc_mux_sel[1..0]" (rect 135 187 235 206)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 192)(pt 240 192)(line_width 3))
+	)
+	(port
+		(pt 256 208)
+		(output)
+		(text "dm_out[15..0]" (rect 0 0 84 19)(font "Intel Clear" (font_size 8)))
+		(text "dm_out[15..0]" (rect 151 203 235 222)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 208)(pt 240 208)(line_width 3))
+	)
+	(port
+		(pt 256 224)
+		(output)
+		(text "Op1_out[15..0]" (rect 0 0 90 19)(font "Intel Clear" (font_size 8)))
+		(text "Op1_out[15..0]" (rect 145 219 235 238)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 224)(pt 240 224)(line_width 3))
+	)
+	(port
+		(pt 256 240)
+		(output)
+		(text "check_AM" (rect 0 0 59 19)(font "Intel Clear" (font_size 8)))
+		(text "check_AM" (rect 176 235 235 254)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 240)(pt 240 240))
+	)
+	(port
+		(pt 256 256)
+		(output)
+		(text "alu_operation[2..0]" (rect 0 0 112 19)(font "Intel Clear" (font_size 8)))
+		(text "alu_operation[2..0]" (rect 123 251 235 270)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 256)(pt 240 256)(line_width 3))
+	)
+	(port
+		(pt 256 272)
+		(output)
+		(text "clr-z_flag" (rect 0 0 54 19)(font "Intel Clear" (font_size 8)))
+		(text "clr-z_flag" (rect 181 267 235 286)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 272)(pt 240 272))
+	)
+	(port
+		(pt 256 288)
+		(output)
+		(text "Rx[15..0]" (rect 0 0 53 19)(font "Intel Clear" (font_size 8)))
+		(text "Rx[15..0]" (rect 182 283 235 302)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 288)(pt 240 288)(line_width 3))
+	)
+	(port
+		(pt 256 304)
+		(output)
+		(text "Rz[15..0]" (rect 0 0 53 19)(font "Intel Clear" (font_size 8)))
+		(text "Rz[15..0]" (rect 182 299 235 318)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 304)(pt 240 304)(line_width 3))
+	)
+	(port
+		(pt 256 320)
+		(output)
+		(text "Op2_out[15..0]" (rect 0 0 90 19)(font "Intel Clear" (font_size 8)))
+		(text "Op2_out[15..0]" (rect 145 315 235 334)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 320)(pt 240 320)(line_width 3))
+	)
+	(port
+		(pt 256 336)
+		(output)
+		(text "state_is[2..0]" (rect 0 0 76 19)(font "Intel Clear" (font_size 8)))
+		(text "state_is[2..0]" (rect 159 331 235 350)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 336)(pt 240 336)(line_width 3))
+	)
+	(port
+		(pt 256 352)
+		(output)
+		(text "present_wr" (rect 0 0 66 19)(font "Intel Clear" (font_size 8)))
+		(text "present_wr" (rect 169 347 235 366)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 352)(pt 240 352))
+	)
+	(port
+		(pt 256 368)
+		(output)
+		(text "wr_en" (rect 0 0 35 19)(font "Intel Clear" (font_size 8)))
+		(text "wr_en" (rect 200 363 235 382)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 368)(pt 240 368))
+	)
+	(port
+		(pt 256 384)
+		(output)
+		(text "Op1_write" (rect 0 0 62 19)(font "Intel Clear" (font_size 8)))
+		(text "Op1_write" (rect 173 379 235 398)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 384)(pt 240 384))
+	)
+	(port
+		(pt 256 400)
+		(output)
+		(text "z_flag" (rect 0 0 35 19)(font "Intel Clear" (font_size 8)))
+		(text "z_flag" (rect 200 395 235 414)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 400)(pt 240 400))
+	)
+	(port
+		(pt 256 416)
+		(output)
+		(text "Op2_write" (rect 0 0 62 19)(font "Intel Clear" (font_size 8)))
+		(text "Op2_write" (rect 173 411 235 430)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 416)(pt 240 416))
+	)
+	(port
+		(pt 256 432)
+		(output)
+		(text "op1_mux_select[1..0]" (rect 0 0 127 19)(font "Intel Clear" (font_size 8)))
+		(text "op1_mux_select[1..0]" (rect 108 427 235 446)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 432)(pt 240 432)(line_width 3))
+	)
+	(port
+		(pt 256 448)
+		(output)
+		(text "ALU_out[15..0]" (rect 0 0 89 19)(font "Intel Clear" (font_size 8)))
+		(text "ALU_out[15..0]" (rect 146 443 235 462)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 448)(pt 240 448)(line_width 3))
+	)
+	(port
+		(pt 256 464)
+		(output)
+		(text "op2_mux_select[1..0]" (rect 0 0 127 19)(font "Intel Clear" (font_size 8)))
+		(text "op2_mux_select[1..0]" (rect 108 459 235 478)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 464)(pt 240 464)(line_width 3))
+	)
+	(port
+		(pt 256 480)
+		(output)
+		(text "present_out[15..0]" (rect 0 0 109 19)(font "Intel Clear" (font_size 8)))
+		(text "present_out[15..0]" (rect 126 475 235 494)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 480)(pt 240 480)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 240 496))
+	)
+)
